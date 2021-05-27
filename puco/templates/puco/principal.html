@@ -1,0 +1,143 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+</head>
+<body>
+    <div class="header col-12">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 center">
+                <img class="logo" src="{% static 'Images/logotipo.png' %}">
+            </div>
+                
+            <div class="col-12 col-md-6 center">
+                <ul class="col-md-12">
+                    <li class="menu"><a href="/">Inicio</a></li>
+                  
+                    <li class="menu"><a href="formulario">Contacto</a></li>
+                    <li class="menu"><a href="login">inicio secion</a></li>
+
+                </ul>
+            </div>
+            <div style="text-align: end;" class="col-sm-12 col-md-3">
+
+                <div class=" col-sm-12">
+                    <a href="https://www.facebook.com/"><img class="web" style="left: auto" src="https://images.vexels.com/media/users/3/137253/isolated/preview/90dd9f12fdd1eefb8c8976903944c026-icono-de-facebook-logo-by-vexels.png"></a>
+                    <a href="https://web.whatsapp.com/"> <img class="web" style="left: auto" src="https://img.icons8.com/plasticine/2x/whatsapp.png"></a>
+                    <a href="https://www.instagram.com/"><img class="web" style="left: auto" src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo-6.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'Images/1.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'Images/2.jpg' %}" class="d-block w-100" alt="...">
+             </div>
+            <div class="carousel-item">
+              <img src="{% static 'Images/3.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'Images/4.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'Images/5.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+
+    <div class="row">
+    {% for ser in producto %}
+   
+        <div class=" row producto col-8 col-sm-4 col-lg-3 " style="background-image: url('{{MEDIA_URL}}{{ser.imagen.url }}'); margin: auto;"  >
+            
+            
+            <h2>{{ ser.title }} </h2>
+            <p>{{ ser.text}}</p>
+            <h3>{{ ser.precio }}</h3>
+        
+        </div>
+         
+    {% endfor %}
+    </div> 
+
+
+
+
+
+
+
+
+
+    <div class="footer col-md-12">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3" >
+                <ul><h2 style="color: black">Menu</h2>
+                     <li><a href="/">Inicio</a></li>
+                  
+                     <li><a href="contacto">Contacto</a></li>
+                     <li><a href="login">inicio secion</a></li>
+
+                </ul>  
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3" >
+                <ul><h2 style="color: black">servicios</h2>
+                    <li><a href="#">domiciliario</a></li>
+                    <li><a href="#"></a>telefonico</li>
+                    <li><a href="#"></a>local</li>
+
+                </ul>  
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3" >
+                <ul><h2 style="color: black">horarios</h2>
+                    <li><a href="#">lunea a viernes <br>   
+                    8:00 a 22:00</a></li>
+                    <li><a href="#">sabado a domingo <br>   
+                     9:00 a 21:00</a></li>
+
+                </ul>  
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3" >
+                <ul><h2 style="color: black">especialistas</h2>
+                   <li><a href="#">miguel sepulveda</a></li>
+                   <li><a href="#">manuel rivas</a></li>
+                   <li><a href="#">juan perez</a></li>
+
+                </ul> 
+
+
+            </div>
+            <div class="col-12">
+                <p class="center" style=" color: white;">Antonio Varas 666, Providencia, Región Metropolitana</p>
+            </div>
+            <div style="text-align: end;" class="col-sm-12">
+
+                <div class=" col-sm-12">
+                    <a href="https://www.facebook.com/"><img class="web" style="left: auto" src="https://images.vexels.com/media/users/3/137253/isolated/preview/90dd9f12fdd1eefb8c8976903944c026-icono-de-facebook-logo-by-vexels.png"></a>
+                    <a href="https://web.whatsapp.com/"> <img class="web" style="left: auto" src="https://img.icons8.com/plasticine/2x/whatsapp.png"></a>
+                    <a href="https://www.instagram.com/"><img class="web" style="left: auto" src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo-6.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

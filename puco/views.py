@@ -1,9 +1,15 @@
-from django.shortcuts import render
 from django.utils import timezone
-from .models import Post
+from .models import Producto
+
+from django.contrib.auth import logout as do_logout
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as do_login
+from django.contrib.auth.forms import UserCreationForm
+
 
 # Create your views here.
-def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'puco/post_list.html', {'posts':posts})
-    
+def producto(request):
+    producto=Producto.objects.all()
+    return render(request, 'puco/principal.html', {"producto":producto}) 
