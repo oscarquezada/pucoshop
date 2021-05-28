@@ -1,10 +1,9 @@
-'''from django import forms
+from django import forms
 
-from .models import Consulta,Producto
+from .models import Producto
 
 
-class PostForm(forms.ModelForm):
-    
+class Postproducto(forms.ModelForm):
     class Meta:
-        model = Consulta
-        fields = ('Rut', 'Nombres','Correo','Telefono','Asunto')'''
+        model= Producto
+        fields=('title','text','precio','imagen') 

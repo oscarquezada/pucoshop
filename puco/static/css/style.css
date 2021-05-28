@@ -1,0 +1,104 @@
+/*estilos generales*/
+body{
+    padding: 0;
+    margin: 0;
+}
+.row{
+    margin: 0;
+}
+.header {
+    position: sticky; 
+    background-color: rgb(25, 38, 68);
+    top: 0;
+    height:auto;
+    z-index: 20;
+    padding: 0;
+    border:1px solid  black;
+    margin-bottom: 40px;
+}
+a{
+    color:white;
+    text-decoration: none !important;
+}
+.logo{
+    position: relative;
+    
+    height: 85px;
+    width: 170px;
+}
+ul { 
+    text-align: center;
+    position: relative;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+      
+}
+
+li {
+   
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 15px;
+    
+  
+}
+.producto{
+   
+    overflow: hidden;
+    font-weight: bolder;
+    display:inline-block!important;
+    margin: 30px 50px;
+    padding: 20px;
+    text-align: center; 
+    height: 300px;
+    transition: all 2s;
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 768px){
+    .producto{
+        margin:30px auto;
+    }
+}
+.producto:hover{
+    height: 400px;
+    
+}
+.row{
+    margin: 0;
+}
+
+
+
+
+.menu{
+    display: inline-block;
+}
+@media only screen and (max-width: 768px){
+    .menu{
+        display: block;
+    }
+}
+
+
+.menu{
+    display: inline-block;
+}
+.web{
+    width: 40px;
+    height: 40px;
+}
+
+.footer {
+    position: relative;
+    background-color: rgb(25, 38, 68);
+    color: white;
+    text-align: center;
+    font-size: 20;
+    padding: 0px;
+  }
+
+.center{
+    text-align: center;
+}
