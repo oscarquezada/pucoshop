@@ -44,16 +44,17 @@ li {
   
 }
 .producto{
-   
+    background-color: aqua;
     overflow: hidden;
     font-weight: bolder;
     display:inline-block!important;
-    margin: 30px 50px;
+    margin: 20px;
     padding: 20px;
     text-align: center; 
-    height: 300px;
+    height: 270px;
     transition: all 2s;
     border-radius: 20px;
+    
 }
 
 @media only screen and (max-width: 768px){
