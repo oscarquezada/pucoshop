@@ -61,6 +61,9 @@ li {
     .producto{
         margin:30px auto;
     }
+    .menu{
+        display: block;
+    }
 }
 .producto:hover{
     height: 400px;
@@ -75,11 +78,6 @@ li {
 
 .menu{
     display: inline-block;
-}
-@media only screen and (max-width: 768px){
-    .menu{
-        display: block;
-    }
 }
 
 
