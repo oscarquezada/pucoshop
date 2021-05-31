@@ -47,38 +47,27 @@ li {
     background-color: aqua;
     overflow: hidden;
     font-weight: bolder;
-    display:inline-block!important;
-    margin: 20px;
+    display:inline-block!important;   
     padding: 20px;
     text-align: center; 
     height: 270px;
-    transition: all 2s;
-    border-radius: 20px;
-    
+    transition:all  3s;
+    border-radius: 20px;    
+    margin: 20px;
 }
 
-@media only screen and (max-width: 768px){
-    .producto{
-        margin:30px auto;
-    }
-    .menu{
-        display: block;
-    }
-}
+
+
 .producto:hover{
     height: 400px;
-    
+   
 }
-.row{
-    margin: 0;
-}
-
-
 
 
 .menu{
     display: inline-block;
 }
+
 
 
 .menu{
@@ -100,4 +89,14 @@ li {
 
 .center{
     text-align: center;
+}
+
+
+@media only screen and (max-width: 768px){
+    .producto{
+        margin:30px auto;
+    }
+    .menu{
+        display: block;
+    }
 }
