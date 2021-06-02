@@ -12,4 +12,5 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def producto(request):
     producto=Producto.objects.all()
-    return render(request, 'puco/principal.html', {"producto":producto}) 
+    ultimos=Producto.objects.order_by('-id')[:4]
+    return render(request, 'puco/principal.html', {"producto":producto,"ultimos":ultimos}) 
