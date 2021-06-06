@@ -1,0 +1,15 @@
+.center{
+    text-align: center;
+    margin: 10% auto 0 auto;
+}
+.borde{
+    border:2px  solid  black !important;
+}
+body{
+    background-image: url('/static/images/carrusel.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.color{
+    background-color:rgba(250, 250, 250, 0.7);
+}
