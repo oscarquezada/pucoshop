@@ -22,12 +22,14 @@ from django.conf.urls.static import static
 from . import settings
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls import handler404
+from puco.views import mi_error_404
+ 
+handler404 = views.mi_error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('puco.urls')),
-    path('register', views.register),
-    path('login', views.login),
-    path('logout', views.logout),
+
     
     
 ]

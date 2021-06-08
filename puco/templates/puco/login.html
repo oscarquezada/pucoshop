@@ -14,21 +14,25 @@
     </head>
     <body >
         
-       <div class="col-8 col-md-2 center border color " >
+       <div class="col-6 col-sm-4 col-md-3  center border color " >
             <h2 class="">Iniciar sesión</h2>
             <form method="POST" class="post-form">
                 {% csrf_token %}
-                <h4>usuario</h4>
-                {% render_field form.Nombres placeholder="username" %} 
-                <h4>clave</h4>
-                {% render_field form.clave placeholder="*********" %} 
-               
-               
-                <button type="submit">Login</button>
+                {{ form.as_p }} 
+                <div>
+                    <button type="submit">Login</button>
+                </div>
             </form>
+            
+                
+            
+            <div>
+                <a href="/register">Registrar usuario</a>
+            </div>
+            
 
           
-            <a href="/register">Registrar usuario</a>
+            
        </div>
     </body>
 </html>

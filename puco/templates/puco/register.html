@@ -12,16 +12,19 @@
         <title>Document</title>
     </head>
     <body>
-        <div class="col-8 col-md-4 center border color " >
+        <div class="col-6 col-sm-4 col-md-3 center border color " >
             <h2>Registrar usuario</h2>
             <form method="POST" class="post-form">
                 
                 {% csrf_token %}
-                {{ form.as_p }}
-            
-                <button type="submit">Registrar</button>
-                
+                <div style="text-align: center;">
+                    {{ form.as_p }}
+                </div>
+                <div>
+                    <button type="submit">Registrar</button>
+                </div>
             </form>
+            
             <a href="/login">Iniciar sesión</a>
         </div>
     </body>

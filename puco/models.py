@@ -1,30 +1,32 @@
 from django.db import models
-from django.utils import timezone
-from django import forms
+from django.contrib.auth.models import AbstractBaseUser
 
 
-class Cliente (models.Model):
+
+class Cliente (AbstractBaseUser):
        
 
-    Rut = models.CharField(max_length=10)
+    rut = models.CharField(max_length=10, unique=True)
                             #widget= forms.TextInput
                            #(attrs={'placeholder':'12345678-9'}))
-    Nombres=models.CharField(max_length=50)
+    nikename=models.CharField(max_length=10,unique=True)                       
+    nombres=models.CharField(max_length=50)
                             #widget= forms.TextInput
                            #(attrs={'placeholder':'Juan Perez'}))
-    clave= models.CharField(max_length=50 , null=True )
+    password= models.CharField(max_length=50 , null=False )
 
 
-    Correo=models.EmailField( max_length=50)
+    correo=models.EmailField( max_length=50)
                             #widget= forms.TextInput
                            #(attrs={'placeholder':'Ejemplo@Ejemplo.com'}))
-    Telefono=models.CharField(max_length=50)
+    telefono=models.CharField(max_length=50)
                             #widget= forms.TextInput
                             #(attrs={'placeholder':'987654321'}))
-
-
+    last_login= models.DateTimeField(null=True)
+                           
+    USERNAME_FIELD='nikename'
     def __str__(self):
-        return self.Rut
+        return self.rut
         
 
 class Producto(models.Model):
