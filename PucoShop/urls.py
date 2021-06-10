@@ -25,7 +25,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import handler404
 from puco.views import mi_error_404
  
-handler404 = views.mi_error_404
+handler404 = mi_error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('puco.urls')),
