@@ -7,10 +7,17 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login 
 from django.views.defaults import page_not_found
 from .backend import MyBackend
+from .cart import Cart
 
 # Create your views here.
-
 myBakend=MyBackend()
+
+
+def welcome(request):
+    
+    
+    return render(request, 'puco/welcome.html')
+
 
  
 def mi_error_404(request, exception):
@@ -77,8 +84,22 @@ def logout(request):
     # Redireccionamos a la portada
     return redirect('/')
 
-def welcome(request):
-    
-    return render(request, 'puco/welcome.html')
 
+def agregarCarro(request):
+    
+    carrito=Cart(request)
+    producto={"id":1, "nombre":"pro1","precio":5000}
+
+    carrito.add(producto)
+    return redirect('/')
+
+def eliminarCarro(request):
+    #id recuperar id
+    carrito=Cart(request)
+    productoDb= Producto.objects.get(pk=id)
+    
+    producto={"id":id, "nombre":productoDb.nombre,"precio":productoDb.precio}
+
+    carrito.remove(producto)
+    return redirect('/')
 
