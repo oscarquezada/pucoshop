@@ -16,7 +16,43 @@ myBakend=MyBackend()
 def welcome(request):
     
     
-    return render(request, 'puco/welcome.html')
+    return render(request, 'puco/welcome.html',{"agregarProductoCarro","eliminarProductoCarro","menosProductoCarro","eliminarCarro"})
+    
+def agregarProductoCarro(request):
+    
+    carrito=Cart(request)
+    productoDB= Producto.objects.get(pk=id)
+    
+    producto={"id":id, "nombre":productoDB.nombre,"precio":productoDB.precio}
+    carrito.add(producto)
+    return redirect('/')
+
+def eliminarProductoCarro(request):
+    #id recuperar id
+    carrito=Cart(request)
+    productoDb= Producto.objects.get(pk=id)
+    
+    producto={"id":id, "nombre":productoDb.nombre,"precio":productoDb.precio}
+
+    carrito.remove(producto)
+    return redirect('/')
+
+def menosProductoCarro(request):
+    
+    carrito=Cart(request)
+    producotDb=Producto.objects.get(pk=id)
+    producto={"id":id, "nombre":producotDb.nombre,"precio":producotDb.precio}
+
+    carrito.decrement(producto)
+    return redirect('/')
+def eliminarCarro(request):
+    carrito=Cart(request)
+    producotDb=Producto.objects.get(pk=id)
+    producto={"id":id, "nombre":producotDb.nombre,"precio":producotDb.precio}
+
+    carrito.clear(producto)
+    return redirect('/')
+
 
 
  
@@ -83,23 +119,3 @@ def logout(request):
     do_logout(request)
     # Redireccionamos a la portada
     return redirect('/')
-
-
-def agregarCarro(request):
-    
-    carrito=Cart(request)
-    producto={"id":1, "nombre":"pro1","precio":5000}
-
-    carrito.add(producto)
-    return redirect('/')
-
-def eliminarCarro(request):
-    #id recuperar id
-    carrito=Cart(request)
-    productoDb= Producto.objects.get(pk=id)
-    
-    producto={"id":id, "nombre":productoDb.nombre,"precio":productoDb.precio}
-
-    carrito.remove(producto)
-    return redirect('/')
-
