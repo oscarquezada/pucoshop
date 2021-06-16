@@ -16,7 +16,7 @@ myBakend=MyBackend()
 def welcome(request):
     
     
-    return render(request, 'puco/welcome.html',{"agregarProductoCarro","eliminarProductoCarro","menosProductoCarro","eliminarCarro"})
+    return render(request, 'puco/welcome.html')
     
 def agregarProductoCarro(request):
     
@@ -25,7 +25,8 @@ def agregarProductoCarro(request):
     
     producto={"id":id, "nombre":productoDB.nombre,"precio":productoDB.precio}
     carrito.add(producto)
-    return redirect('/')
+    return redirect('welcome',{"agregarProductoCarro":carrito})
+   
 
 def eliminarProductoCarro(request):
     #id recuperar id
