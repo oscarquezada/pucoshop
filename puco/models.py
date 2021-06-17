@@ -40,3 +40,18 @@ class Producto(models.Model):
     def __str__(self):
         return self.title   
     
+class Mascota(models.Model):
+    Tipos = (
+        ('P','Perro'),
+        ('G','Gato'),
+    )
+    Tamano=(
+        ('P','Pequeño'),
+        ('M','Mediano'),
+        ('G','Grande'),
+    )
+    rut=models.ForeignKey(Cliente, on_delete=models.CASCADE) 
+    tipo= models.CharField(max_length=1, choices=Tipos)
+    edad = models.CharField(max_length=2)
+    tamano=models.CharField(max_length=1, choices=Tamano)
+    peso=models.CharField(max_length=2)

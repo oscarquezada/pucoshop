@@ -1,6 +1,6 @@
 from django.utils import timezone
-from .models import Cliente,Producto
-from .forms import PostForm ,LoginPostForm
+from .models import Cliente,Producto, Mascota
+from .forms import PostForm ,LoginPostForm, MascotaPostForm
 from django.contrib.auth import backends, logout as do_logout
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
@@ -113,6 +113,25 @@ def login_user(request):
 
     # Si llegamos al final renderizamos el formulario
     return render(request, "puco/login.html", {'form': form})
+
+def mascota(request):
+    form = MascotaPostForm()
+    if request.method == "POST":
+        # Añadimos los datos recibidos al formulario
+        form = MascotaPostForm(request.POST)     
+
+        if form.is_valid():
+            
+            form.save()  
+            # Creamos la nueva cuenta de usuario
+
+            # Si el usuario se crea correctamente 
+            if form is not None:
+                # Hacemos el login manualmente
+                # Y le redireccionamos a la portada
+                return redirect('/welcome')
+
+    return render(request, 'puco/mascota.html', {'form': form})
 
 
 

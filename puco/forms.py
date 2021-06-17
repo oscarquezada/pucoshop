@@ -1,7 +1,7 @@
 from django import forms
 from django.db.models import fields
 
-from .models import Producto,Cliente
+from .models import Producto,Cliente,Mascota
 
 
 
@@ -16,3 +16,8 @@ class LoginPostForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ('nikename','password')
+
+class MascotaPostForm(forms.ModelForm):
+    class Meta:
+        model= Mascota
+        fields = ('rut','tipo','edad','tamano','peso')
