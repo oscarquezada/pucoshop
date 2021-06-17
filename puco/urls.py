@@ -6,9 +6,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', views.producto, name='principal'),
+    path('', views.productoMuestra, name='principal'),
     
-    path('welcome', views.welcome,name='welcome'),
+    path('welcome', views.producto,name='welcome'),
 
 
     #path de los loguin
@@ -17,6 +17,7 @@ urlpatterns = [
     path('login', views.login_user),
     path('logout', views.logout),
     path('mascota', views.mascota),
-    path('carrito', views.carrito)
+    path('carrito', views.carrito),
+    path('agregarProductoCarro', views.agregarProductoCarro)
 ]
 

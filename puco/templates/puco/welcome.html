@@ -10,6 +10,20 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
         <title>Document</title>
+        <script>
+            function Agregar(ele){
+                id =ele.getAttribute("id");
+                console.log(ele.getAttribute("id"));
+                var xhr= new XMLHttpRequest();
+                xhr.onreadystatechange=function(){
+                    if (xhr.status==200 && xhr.readyState==4){
+                        alert("producto agregado con exito");
+                    }
+                }
+                xhr.open("get","/agregarProductoCarro?id="+id);
+                xhr.send();
+            }
+        </script>
     </head>
     <body>
         <div class="header col-12">
@@ -23,7 +37,6 @@
                         <li class="menu"><a href="#">Bienvenido/a: {{user.get_username}}</a></li>
                         <li class="menu"><a href="/mascota">Registrar mascota</a></li>
                         <li class="menu"><a href="/">Contacto</a></li>
-                        <li class="menu"><a href="/logout">Cerrar sesión</a></li>
                         <li class="menu"><a href="carrito">carrito</a></li>
                         <li class="menu"><a href="/logout">Cerrar sesión</a></li>
     
@@ -41,44 +54,20 @@
         </div>
 
 
-        <!--<div class="col-12 col-md-8 col-lg-11 center" style="background-color: rgb(25, 38, 68); margin: auto; padding-bottom:  50px;">
+        <div class="row">
+            {% for ser in producto %}
+                
+                <div class=" row producto col-8 col-sm-4 col-lg-3 " style="margin: 30px auto;"  >
                     
-            <form method="POST" class="post-form">{% csrf_token %}
-                <div class="row">
-                    <div class="col-12 col-md-6 formulario">
-                        <h4>titulo</h4>
-                
-                        {% render_field pro.title placeholder="titulo" %} 
-                
-                        
-                    </div> 
-                    <div class="col-12 col-md-6  formulario">
-                        <h4>texto</h4>
-                        {% render_field pro.text placeholder="texto"%}
-                            
-                    </div>
-                        
-
-                    <div class="col-12 col-md-6  formulario">
-                            <h4>precio</h4>
-                            {% render_field pro.precio placeholder="$99999"%}
-                            
-                    </div>
-                            
-                    <div class="col-12 col-md-6  formulario">
-                        <h4>imagen</h4>
-                        {% render_field pro.imagen placeholder="imagen" %}
-            
-                    </div>
+                    <img style="width: 80%;max-height: 200px;" src="{{MEDIA_URL}}{{ser.imagen.url}}">
+                    <h2>{{ ser.title }} </h2>
+                    <p>{{ ser.text}}</p>
+                    <h3>{{ ser.precio }}</h3>
+                    <button id={{ser.id}} onclick="Agregar(this)">agregar al carro</button>
                 </div>
-                        
-                <div style="margin: 50px 60px;" class="center">
-                    <button type="submit" class="save btn btn-default" style="background-color: purple;height: 50px; width: 80%;" >Enviar</button>
-                            
-                </div>  
-            </form>
-        </div>-->
-    
+                 
+            {% endfor %}
+        </div> 
         
         <div class="footer col-md-12">
             <div class="row">

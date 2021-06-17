@@ -12,21 +12,21 @@ from .cart import Cart
 # Create your views here.
 myBakend=MyBackend()
 def carrito(request):
-    return render(request,'puco/carrito.html')
+    carrito=Cart(request)
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
 
-def welcome(request):
-    
-    
-    return render(request, 'puco/welcome.html')
-    
+
 def agregarProductoCarro(request):
     
     carrito=Cart(request)
+    id=request.GET['id']
     productoDB= Producto.objects.get(pk=id)
     
-    producto={"id":id, "nombre":productoDB.nombre,"precio":productoDB.precio}
+    producto={"id":id, "nombre":productoDB.title,"precio":productoDB.precio}
     carrito.add(producto)
-    return redirect('asd',{"agregarProductoCarro":carrito})
+    print(carrito)
+    print(carrito.total)
+    return redirect('welcome')
    
 
 def eliminarProductoCarro(request):
@@ -63,11 +63,14 @@ def mi_error_404(request, exception):
     #return page_not_found(request, template_name=nombre_template)
 
     
+def productoMuestra(request):
+    
+    ultimos=Producto.objects.order_by('-id')[:4]
+    return render(request, 'puco/principal.html', {"ultimos":ultimos}) 
+
 def producto(request):
     producto=Producto.objects.all()
-    ultimos=Producto.objects.order_by('-id')[:4]
-    return render(request, 'puco/principal.html', {"producto":producto,"ultimos":ultimos}) 
-
+    return render(request,'puco/welcome.html',{"producto":producto})
 
 def register(request):
     # Creamos el formulario de autenticación vacío

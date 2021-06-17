@@ -29,14 +29,50 @@
                 </div>
             </div>
         </div> 
-        <div class="center divMostrar col-8 col-sm-4 col-lg-3">
-           
-                <h1>lista de productos</h1>
-                <li class="lista">nombre</li>
-                <li class="lista">precio</li>
-                <li class="lista">cantidad</li>
-            
+
+        
+
+
+        <div class="col-12 center">
+            <h1> productos en el carrito</h1>
+            <div class=" row  col-12" >
+                        
+
+                <li class="menu" style="width: 20%; padding: 0;">nombre</li>
+                <li class="menu" style="width: 20%; padding: 0;">preciounidad</li>
+                <li class="menu" style="width: 20%; padding: 0;">cantidad</li>
+                <li class="menu" style="width: 20%; padding: 0;">preciototal</li>
+
+            </div>
+            <div class="row">
+                {% for key,value in carrito %}
+                    
+                    <div class=" row  col-12" >
+                        
+                        <li class="menu" style="width: 20%; padding: 0;">{{ value.nombre }}</li>
+                        <li class="menu" style="width: 20%; padding: 0;">{{ value.cantidad}}</li>
+                        <li class="menu" style="width: 20%; padding: 0;">{{ value.precio }}</li>
+                        <li class="menu" style="width: 20%; padding: 0;">{{ value.subTotal }}</li>
+                        
+                        
+                    </div>
+                     
+                {% endfor %}
+            </div> 
+            <!--<div><p>{{ total}}</p></div>-->
         </div>
+    
+
+
+
+
+
+
+
+
+
+
+
         <div class="footer col-md-12">
             <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3" >

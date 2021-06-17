@@ -50,6 +50,19 @@ li {
     
     margin: auto; 
 }
+.productoMuestra{
+    
+    overflow: hidden;
+    font-weight: bolder;
+    display:inline-block!important;   
+    padding: 20px;
+    text-align: center; 
+    height: 270px;
+    transition:all  3s;
+    border-radius: 20px;    
+    
+}
+
 .producto{
     
     overflow: hidden;
@@ -63,27 +76,18 @@ li {
     
 }
 
-
-
-.producto:hover{
+.productoMuestra:hover{
     height: 400px;
+   
+}
+.producto:hover{
+    height: 430px;
    
 }
 
 
 .menu{
     display: inline-block;
-}
-.divMostrar{
-    width: 100%;
-    
-}
-
-.lista{
-    display: inline-block !important;
-    margin:auto ;
-    border-style: solid;
-    
 }
 
 .web{
