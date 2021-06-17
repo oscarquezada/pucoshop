@@ -9,6 +9,37 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
+    <script>
+        function Agregar(ele){
+            id =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/agregarProductoCarro?id="+id);
+            xhr.send();
+        }
+        function Eliminar(ele){
+            id =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/eliminarProductoCarro?id="+id);
+            xhr.send();
+        }
+        function Menos(ele){
+            id =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/menosProductoCarro?id="+id);
+            xhr.send();
+        }
+        function borrar(ele){
+            id =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/eliminarCarro?");
+            xhr.send();
+        }
+    </script>
+
 </head>
     <body>
         <div class="header col-12">
@@ -19,7 +50,7 @@
                     
                 <div class="col-12 col-md-6 center">
                     <ul class="col-md-12">
-                        <li class="menu"><a href="/">Inicio</a></li>
+                        <li class="menu"><a href="welcome">volver</a></li>
                     
                         <li class="menu"><a href="/">Contacto</a></li>
                         <li class="menu"><a href="login">inicio secion</a></li>
@@ -38,10 +69,10 @@
             <div class=" row  col-12" >
                         
 
-                <li class="menu" style="width: 20%; padding: 0;">nombre</li>
-                <li class="menu" style="width: 20%; padding: 0;">preciounidad</li>
-                <li class="menu" style="width: 20%; padding: 0;">cantidad</li>
-                <li class="menu" style="width: 20%; padding: 0;">preciototal</li>
+                <li class="menu" style="width: 12.5%; padding: 0;">nombre</li>
+                <li class="menu" style="width: 12.5%; padding: 0;">cantidad</li>
+                <li class="menu" style="width: 12.5%; padding: 0;">preciounidad</li>
+                <li class="menu" style="width: 12.5%; padding: 0;">preciototal</li>
 
             </div>
             <div class="row">
@@ -49,15 +80,30 @@
                     
                     <div class=" row  col-12" >
                         
-                        <li class="menu" style="width: 20%; padding: 0;">{{ value.nombre }}</li>
-                        <li class="menu" style="width: 20%; padding: 0;">{{ value.cantidad}}</li>
-                        <li class="menu" style="width: 20%; padding: 0;">{{ value.precio }}</li>
-                        <li class="menu" style="width: 20%; padding: 0;">{{ value.subTotal }}</li>
+                        <li class="menu" style="width: 14%; padding: 0;">{{ value.nombre }}</li>
+                        <li class="menu" style="width: 14%; padding: 0;">{{ value.cantidad}}</li>
+                        <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.precio }}</li>
+                        <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.subTotal }}</li>
+                        <form action="/agregarProductoCarro" style="width: 14%; padding: 0;" >
+                            <input name="id" type="hidden" value={{key}}>
+                            <button id={{key}}>+1</button>
+                        </form>
+                        <form action="/menosProductoCarro" style="width: 14%; padding: 0;">
+                            <input name="id" type="hidden" value={{key}}>
+                            <button  id={{key}}>-1</button>
+                        </form>
+                        <form action="/eliminarProductoCarro" style="width: 14%; padding: 0;">
+                            <input name="id" type="hidden" value={{key}}>
+                            <button  id={{key}}>eliminar</button>
+                        </form>
                         
                         
                     </div>
                      
                 {% endfor %}
+               <!-- <form action="/eliminarCarro">
+                <button style="width: 12.5%; padding: 0;">borrar el carrito</button>
+                </form>-->
             </div> 
             <!--<div><p>{{ total}}</p></div>-->
         </div>
@@ -73,7 +119,7 @@
 
 
 
-        <div class="footer col-md-12">
+        <div class="footer col-md-12" style="position:absolute;">
             <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3" >
                 <ul><h2 style="color: black">Menu</h2>

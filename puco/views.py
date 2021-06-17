@@ -26,34 +26,37 @@ def agregarProductoCarro(request):
     carrito.add(producto)
     print(carrito)
     print(carrito.total)
-    return redirect('welcome')
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
    
 
 def eliminarProductoCarro(request):
     #id recuperar id
     carrito=Cart(request)
-    productoDb= Producto.objects.get(pk=id)
-    
-    producto={"id":id, "nombre":productoDb.nombre,"precio":productoDb.precio}
+    id=request.GET['id']
+    productoDB= Producto.objects.get(pk=id)
+    producto={"id":id, "nombre":productoDB.title,"precio":productoDB.precio}
 
     carrito.remove(producto)
-    return redirect('pucoshop/carrito')
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
 
 def menosProductoCarro(request):
     
     carrito=Cart(request)
-    producotDb=Producto.objects.get(pk=id)
-    producto={"id":id, "nombre":producotDb.nombre,"precio":producotDb.precio}
-
+    id=request.GET['id']
+    productoDB= Producto.objects.get(pk=id)
+    producto={"id":id, "nombre":productoDB.title,"precio":productoDB.precio}
+    
     carrito.decrement(producto)
-    return redirect('/')
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
+
 def eliminarCarro(request):
     carrito=Cart(request)
-    producotDb=Producto.objects.get(pk=id)
-    producto={"id":id, "nombre":producotDb.nombre,"precio":producotDb.precio}
+    
+    productoDB= Producto.objects.get(all)
+    producto={"id":id, "nombre":productoDB.title,"precio":productoDB.precio}
 
     carrito.clear(producto)
-    return redirect('/')
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
 
 
 
