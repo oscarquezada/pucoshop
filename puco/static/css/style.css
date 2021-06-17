@@ -74,6 +74,17 @@ li {
 .menu{
     display: inline-block;
 }
+.divMostrar{
+    width: 100%;
+    
+}
+
+.lista{
+    display: inline-block !important;
+    margin:auto ;
+    border-style: solid;
+    
+}
 
 .web{
     width: 40px;

@@ -11,7 +11,8 @@ from .cart import Cart
 
 # Create your views here.
 myBakend=MyBackend()
-
+def carrito(request):
+    return render(request,'puco/carrito.html')
 
 def welcome(request):
     
@@ -25,7 +26,7 @@ def agregarProductoCarro(request):
     
     producto={"id":id, "nombre":productoDB.nombre,"precio":productoDB.precio}
     carrito.add(producto)
-    return redirect('welcome',{"agregarProductoCarro":carrito})
+    return redirect('asd',{"agregarProductoCarro":carrito})
    
 
 def eliminarProductoCarro(request):
@@ -36,7 +37,7 @@ def eliminarProductoCarro(request):
     producto={"id":id, "nombre":productoDb.nombre,"precio":productoDb.precio}
 
     carrito.remove(producto)
-    return redirect('/')
+    return redirect('pucoshop/carrito')
 
 def menosProductoCarro(request):
     
