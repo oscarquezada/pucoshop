@@ -1,5 +1,5 @@
 from django.utils import timezone
-from .models import Cliente,Producto, Mascota
+from .models import Cliente, Ofertas,Producto, Mascota
 from .forms import PostForm ,LoginPostForm, MascotaPostForm
 from django.contrib.auth import backends, logout as do_logout
 from django.shortcuts import render, redirect
@@ -68,14 +68,23 @@ def mi_error_404(request, exception):
     
 def productoMuestra(request):
     
-    ultimos=Producto.objects.order_by('-id')[:4]
-    return render(request, 'puco/principal.html', {"ultimos":ultimos}) 
+    ultimosp=Producto.objects.order_by('-id')[:4]
+    ultimoso=Ofertas.objects.order_by('-id')[:4]
 
-def producto(request):
+    return render(request, 'puco/principal.html', {"ultimosp":ultimosp,"ultimoso":ultimoso}) 
+
+
+def productos(request):
     producto=Producto.objects.all()
-    return render(request,'puco/welcome.html',{"producto":producto})
+    oferta=Ofertas.objects.all()
+    return render(request,'puco/welcome.html',{"producto":producto,"oferta":oferta})
+   
+  
+
+    
 
 def register(request):
+
     # Creamos el formulario de autenticación vacío
     form = PostForm()
     if request.method == "POST":

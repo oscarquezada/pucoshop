@@ -7,8 +7,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.productoMuestra, name='principal'),
+ 
+    path('welcome', views.productos ,name='welcome'),
     
-    path('welcome', views.producto,name='welcome'),
 
 
     #path de los loguin

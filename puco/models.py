@@ -1,5 +1,7 @@
+from typing import Text
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
+from django.db.models.fields.files import ImageField
 
 
 
@@ -39,6 +41,15 @@ class Producto(models.Model):
     
     def __str__(self):
         return self.title   
+class Ofertas(models.Model):
+    title=models.CharField(max_length=200)     
+    Text=models.CharField(max_length=50)
+    precio=models.IntegerField(max_length=10)
+    imagen=models.ImageField(null=True,blank=True)   
+   
+    def __str__(self):
+        return self.title
+
     
 class Mascota(models.Model):
     Tipos = (

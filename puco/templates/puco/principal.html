@@ -41,7 +41,18 @@
             <div class="carousel-item active">
                 <img src="{% static 'Images/carrusel.jpg' %}" style="height: 100%; width: 100%;" class="d-block w-100 ">
             </div>
-            {% for ser in ultimos %}
+            {% for ser in ultimosp %}
+            <div class="carousel-item w-100">
+                <div style="display: inline-block; width: 45%;text-align: center;" >                    
+                <img src="{{MEDIA_URL}}{{ser.imagen.url}}" style="display: inline-block;" class="d-100">
+                </div>
+                <div style="display: inline-block;width: 45%;">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia magni fugiat provident ad quo, esse reprehenderit. Quam eius cupiditate blanditiis dolore qui temporibus, harum impedit necessitatibus quidem ab dolores recusandae.</p>
+                  </div>
+            </div>
+
+            {% endfor %}
+            {% for ser in ultimoso %}
             <div class="carousel-item w-100">
                 <div style="display: inline-block; width: 45%;text-align: center;" >                    
                 <img src="{{MEDIA_URL}}{{ser.imagen.url}}" style="display: inline-block;" class="d-100">
@@ -64,7 +75,7 @@
     </div>
 
     <div class="row">
-    {% for ser in ultimos %}
+    {% for ser in ultimosp %}
         
         <div class=" row productoMuestra col-8 col-sm-4 col-lg-3 " style="margin: 30px auto;"  >
             
@@ -77,6 +88,20 @@
          
     {% endfor %}
     </div> 
+    <div class="row">
+        {% for ser in ultimoso %}
+            
+            <div class=" row productoMuestra col-8 col-sm-4 col-lg-3 " style="margin: 30px auto;"  >
+                
+                <img style="width: 270px;height: 200px;" src="{{MEDIA_URL}}{{ser.imagen.url}}">
+                <h2>{{ ser.title }} </h2>
+                <p>{{ ser.text}}</p>
+                <h3>{{ ser.precio }}</h3>
+            
+            </div>
+             
+        {% endfor %}
+        </div> 
 
 
 
