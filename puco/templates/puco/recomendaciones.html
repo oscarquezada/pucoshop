@@ -40,7 +40,6 @@
                         <li class="menu"><a href="/">Contacto</a></li>
                         <li class="menu"><a href="carrito">carrito</a></li>
                         <li class="menu"><a href="/logout">Cerrar sesión</a></li>
-                        <li class="menu"><a href="/recomendaciones">recomendaciones</a></li>
                         <li class="menu"><a id="botonOn" onclick="FbotonOn()" href="#">promocion</a></li>
     
                     </ul>
@@ -72,7 +71,7 @@
                  
             {% endfor %}
         </div> 
-        <div id="ocultar2" class="row" style="display: none;">
+        <div id="ocultar2" class="row">
             {% for ser in oferta %}
                 
                 <div class=" row producto col-8 col-sm-4 col-lg-3 " style="margin: 30px auto;"  >
@@ -143,14 +142,3 @@
 
     </body>
 </html>
-<script>
-function FbotonOn() {
-  var uno = document.getElementById('botonOn');
-  var intro1 = document.getElementById('ocultar1');
-  var intro2 = document.getElementById('ocultar2');
-  if (uno.innerHTML == 'producto') 
-      uno.innerHTML = 'promocion', intro1.style.display = '',intro2.style.display = 'none';
-      
-  else uno.innerHTML = 'producto' ,intro1.style.display = 'none', intro2.style.display = '';
-}
-</script>

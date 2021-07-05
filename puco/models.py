@@ -32,11 +32,24 @@ class Cliente (AbstractBaseUser):
         
 
 class Producto(models.Model):
-    
+    Tipos = (
+        ('P','Perro'),
+        ('G','Gato'),
+    )
+    Tamano=(
+        ('P','Pequeño'),
+        ('M','Mediano'),
+        ('G','Grande'),
+    )
     title = models.CharField(max_length=200)
     text = models.CharField(max_length=50)
     precio = models.IntegerField(max_length=10)
     imagen= models.ImageField(null=True ,blank=True)
+    cantidad=models.IntegerField(max_length=10)
+    tipo= models.CharField(max_length=1, choices=Tipos)
+    
+    tamano=models.CharField(max_length=1, choices=Tamano)
+
         
     
     def __str__(self):
@@ -61,6 +74,7 @@ class Mascota(models.Model):
         ('M','Mediano'),
         ('G','Grande'),
     )
+
     rut=models.ForeignKey(Cliente, on_delete=models.CASCADE) 
     tipo= models.CharField(max_length=1, choices=Tipos)
     edad = models.CharField(max_length=2)

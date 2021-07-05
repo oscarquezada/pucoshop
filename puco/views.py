@@ -79,7 +79,15 @@ def productos(request):
     oferta=Ofertas.objects.all()
     return render(request,'puco/welcome.html',{"producto":producto,"oferta":oferta})
    
-  
+def recomendaciones(request):
+    #traer id del login
+    mascotata = Mascota.objects.filter(rut=5).values('tamano').distinct().all()
+    mascotati = Mascota.objects.filter(rut=5).values('tipo').distinct().all()
+    producto= Producto.objects.filter(tipo__in=mascotati, tamano__in=mascotata ).all()
+    print(mascotata)
+    print(mascotati)
+    print(producto)
+    return render(request,'puco/recomendaciones.html', {'cliente':producto})   
 
     
 
