@@ -60,8 +60,10 @@ class Cart:
             
             if key ==str(producto.get("id")):
                 value["cantidad"]=value["cantidad"]-1
+                value["subTotal"]=int(value["cantidad"])* int(value["precio"])
                 if value["cantidad"]<1:
                     self.remove(producto)  
+                    
                     break  
                 else:
                     self.save()
@@ -72,4 +74,4 @@ class Cart:
     def clear(self):
         self.session["cart"]={}
         self.session.modified=True
-        #self.total=0
+        self.total=0

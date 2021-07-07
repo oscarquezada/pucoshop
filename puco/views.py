@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import Cliente, Ofertas,Producto, Mascota
 from .forms import PostForm ,LoginPostForm, MascotaPostForm
@@ -81,13 +82,17 @@ def productos(request):
    
 def recomendaciones(request):
     #traer id del login
-    mascotata = Mascota.objects.filter(rut=5).values('tamano').distinct().all()
-    mascotati = Mascota.objects.filter(rut=5).values('tipo').distinct().all()
+    #enconding: utf-8
+    
+    username=request.user.get_username()
+    
+    cliente= Cliente.objects.filter(nikename=username).get()
+    print(cliente)
+    mascotata = Mascota.objects.filter(rut=cliente).values('tamano').distinct().all()
+    mascotati = Mascota.objects.filter(rut=cliente).values('tipo').distinct().all()
     producto= Producto.objects.filter(tipo__in=mascotati, tamano__in=mascotata ).all()
-    print(mascotata)
-    print(mascotati)
-    print(producto)
-    return render(request,'puco/recomendaciones.html', {'cliente':producto})   
+
+    return render(request,'puco/recomendaciones.html', {'producto':producto})   
 
     
 

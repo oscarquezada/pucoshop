@@ -28,7 +28,8 @@ class Cliente (AbstractBaseUser):
                            
     USERNAME_FIELD='nikename'
     def __str__(self):
-        return self.rut
+        return self.nikename
+        
         
 
 class Producto(models.Model):

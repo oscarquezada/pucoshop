@@ -11,16 +11,35 @@
         <link rel="stylesheet" href="{% static 'css/logins.css' %}">
         
         <title>Document</title>
+        <script>
+            function Agregar(ele){
+             
+              
+                var xhr= new XMLHttpRequest();
+                xhr.onreadystatechange=function(){
+                    if (xhr.status!=200){
+                        alert("usuario o clave incorrecto");
+                    }
+                    
+                }
+             
+            }
+        </script>
     </head>
     <body >
         
        <div class="col-6 col-sm-4 col-md-3  center border color " >
             <h2 class="">Iniciar sesión</h2>
-            <form method="POST" class="post-form">
+            <form method="POST" class="post-form" style="display: block;">
                 {% csrf_token %}
-                {{ form.as_p }} 
                 <div>
-                    <button type="submit">Login</button>
+                    {% render_field form.nikename placeholder="nikname" %} 
+                </div>
+                <div>
+                    {% render_field form.password placeholder="*******" %} 
+                </div>
+                <div>
+                    <button id={{from.id}} onclick="Agregar" type="submit">Login</button>
                 </div>
             </form>
             
