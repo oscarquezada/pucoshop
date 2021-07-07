@@ -38,6 +38,29 @@
             xhr.open("get","/eliminarCarro?");
             xhr.send();
         }
+        //oferta/
+        function Agregar1(ele){
+            id =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/agregarOfertaCarro?id="+id);
+            xhr.send();
+        }
+        function Eliminar1(ele){
+            id =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/eliminarOfertaCarro?id="+id);
+            xhr.send();
+        }
+        function Menos1(ele){
+            id =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/menosOfertaCarro?id="+id);
+            xhr.send();
+        }
+
     </script>
 
 </head>
@@ -50,7 +73,7 @@
                     
                 <div class="col-12 col-md-6 center">
                     <ul class="col-md-12">
-                        <li class="menu"><a href="welcome">volver</a></li>
+                        <li class="menu"><a onclick="history.back(-1)" class="link-button link-back-button">volver</a></li>
                     
                         <li class="menu"><a href="/">Contacto</a></li>
                         <li class="menu"><a href="login">inicio secion</a></li>
@@ -77,6 +100,7 @@
             </div>
             <div class="row">
                 {% for key,value in carrito %}
+    
                     
                     <div class=" row  col-12" >
                         
@@ -105,7 +129,9 @@
                 <button style="width: 12.5%; padding: 0;">borrar el carrito</button>
                 </form>-->
             </div> 
+
             <!--<div><p>{{ total}}</p></div>-->
+
         </div>
     
 
@@ -170,7 +196,7 @@
                 </div>
             </div>
         </div>
-    </div></div> 
+   
     </body>
 
 </html>    

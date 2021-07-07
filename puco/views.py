@@ -168,3 +168,37 @@ def logout(request):
     do_logout(request)
     # Redireccionamos a la portada
     return redirect('/')
+
+
+  #oferta
+def agregarOfertaCarro(request):
+    
+    carrito=Cart(request)
+    id=request.GET['id']
+    ofertaDB= Ofertas.objects.get(pk=id)
+    
+    oferta={"id":id, "nombre":ofertaDB.title,"precio":ofertaDB.precio}
+    carrito.add1(oferta)
+    print(carrito)
+    print(carrito.total)
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})  
+
+def eliminarOfertaCarro(request):
+    #id recuperar id
+    carrito=Cart(request)
+    id=request.GET['id']
+    ofertaDB= Ofertas.objects.get(pk=id)
+    ofertas={"id":id, "nombre":ofertaDB.title,"precio":ofertaDB.precio}
+
+    carrito.remove(ofertas)
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
+
+def menosOfertaCarro(request):
+    
+    carrito=Cart(request)
+    id=request.GET['id']
+    ofertaDB= Ofertas.objects.get(pk=id)
+    producto={"id":id, "nombre":ofertaDB.title,"precio":ofertaDB.precio}
+    
+    carrito.decrement(producto)
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})

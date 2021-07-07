@@ -23,6 +23,18 @@
                 xhr.open("get","/agregarProductoCarro?id="+id);
                 xhr.send();
             }
+            function Agregar1(ele){
+                id =ele.getAttribute("id");
+                console.log(ele.getAttribute("id"));
+                var xhr= new XMLHttpRequest();
+                xhr.onreadystatechange=function(){
+                    if (xhr.status==200 && xhr.readyState==4){
+                        alert("oferta agregada con exito");
+                    }
+                }
+                xhr.open("get","/agregarOfertaCarro?id="+id);
+                xhr.send();
+            }
         </script>
         
     </head>
@@ -81,7 +93,7 @@
                     <h2>{{ ser.title }} </h2>
                     <p>{{ ser.text}}</p>
                     <h3><span>$</span>{{ ser.precio }}</h3>
-                    <button id={{ser.id}} onclick="Agregar(this)">agregar al carro</button>
+                    <button id={{ser.id}} onclick="Agregar1(this)">agregar al carro</button>
                 </div>
                  
             {% endfor %}

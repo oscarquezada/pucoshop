@@ -12,17 +12,17 @@
         
         <title>Document</title>
         <script>
-            function Agregar(ele){
+            function comprobar(ele){
              
               
                 var xhr= new XMLHttpRequest();
                 xhr.onreadystatechange=function(){
-                    if (xhr.status!=200){
+                    if (xhr.status==200){
                         alert("usuario o clave incorrecto");
                     }
                     
                 }
-             
+                xhr.send();
             }
         </script>
     </head>
@@ -39,7 +39,7 @@
                     {% render_field form.password placeholder="*******" %} 
                 </div>
                 <div>
-                    <button id={{from.id}} onclick="Agregar" type="submit">Login</button>
+                    <button id={{from.id}} onclick="comprobar" type="submit">Login</button>
                 </div>
             </form>
             
