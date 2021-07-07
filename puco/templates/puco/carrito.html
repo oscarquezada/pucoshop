@@ -45,6 +45,7 @@
             var xhr= new XMLHttpRequest();
             xhr.open("get","/agregarOfertaCarro?id="+id);
             xhr.send();
+            
         }
         function Eliminar1(ele){
             id =ele.getAttribute("id");
@@ -108,10 +109,12 @@
                         <li class="menu" style="width: 14%; padding: 0;">{{ value.cantidad}}</li>
                         <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.precio }}</li>
                         <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.subTotal }}</li>
-                        <form action="/agregarProductoCarro" style="width: 14%; padding: 0;" >
+                        
+                        <form id="agregar" action="/agregarProductoCarro"  style="width: 14%; padding: 0;" >
                             <input name="id" type="hidden" value={{key}}>
                             <button id={{key}}>+1</button>
                         </form>
+        
                         <form action="/menosProductoCarro" style="width: 14%; padding: 0;">
                             <input name="id" type="hidden" value={{key}}>
                             <button  id={{key}}>-1</button>
@@ -130,20 +133,43 @@
                 </form>-->
             </div> 
 
+            <div class="row">
+                {% for key,value in carrito1 %}
+    
+                    
+                    <div class=" row  col-12" >
+                        
+                        <li class="menu" style="width: 14%; padding: 0;">{{ value.nombre }}</li>
+                        <li class="menu" style="width: 14%; padding: 0;">{{ value.cantidad}}</li>
+                        <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.precio }}</li>
+                        <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.subTotal }}</li>
+                        
+                        <form id="agregar" action="/agregarOfertaCarro" action="/carrito"  style="width: 14%; padding: 0;" >
+                            <input name="id" type="hidden" value={{key}}>
+                            <button id={{key}}>+1</button>
+                        </form>
+        
+                        <form action="/menosOfertaCarro" style="width: 14%; padding: 0;">
+                            <input name="id" type="hidden" value={{key}}>
+                            <button  id={{key}}>-1</button>
+                        </form>
+                        <form action="/eliminarOfertaCarro" style="width: 14%; padding: 0;">
+                            <input name="id" type="hidden" value={{key}}>
+                            <button  id={{key}}>eliminar</button>
+                        </form>
+                        
+                        
+                    </div>
+                     
+                {% endfor %}
+               <!-- <form action="/eliminarCarro">
+                <button style="width: 12.5%; padding: 0;">borrar el carrito</button>
+                </form>-->
+            </div> 
             <!--<div><p>{{ total}}</p></div>-->
 
         </div>
     
-
-
-
-
-
-
-
-
-
-
 
         <div class="footer col-md-12" style="position:absolute;">
             <div class="row">

@@ -17,6 +17,7 @@ urlpatterns = [
     path('logout', views.logout),
     path('mascota', views.mascota),
     path('carrito', views.carrito),
+    
     path('agregarProductoCarro', views.agregarProductoCarro),
     path('agregarOfertaCarro', views.agregarOfertaCarro),
     path('eliminarProductoCarro', views.eliminarProductoCarro),

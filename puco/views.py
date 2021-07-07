@@ -14,7 +14,9 @@ from .cart import Cart
 myBakend=MyBackend()
 def carrito(request):
     carrito=Cart(request)
-    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
+    
+    
+    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(),"carrito1":carrito.cart1.items()})
 
 
 def agregarProductoCarro(request):
@@ -173,32 +175,31 @@ def logout(request):
   #oferta
 def agregarOfertaCarro(request):
     
-    carrito=Cart(request)
+    carrito1=Cart(request)
     id=request.GET['id']
     ofertaDB= Ofertas.objects.get(pk=id)
     
     oferta={"id":id, "nombre":ofertaDB.title,"precio":ofertaDB.precio}
-    carrito.add1(oferta)
-    print(carrito)
-    print(carrito.total)
-    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})  
+    carrito1.add1(oferta)
+ 
+    return render(request,'puco/carrito.html', {"carrito1":carrito1.cart1.items(), "total":carrito1.total})  
 
 def eliminarOfertaCarro(request):
     #id recuperar id
-    carrito=Cart(request)
+    carrito1=Cart(request)
     id=request.GET['id']
     ofertaDB= Ofertas.objects.get(pk=id)
     ofertas={"id":id, "nombre":ofertaDB.title,"precio":ofertaDB.precio}
 
-    carrito.remove(ofertas)
-    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
+    carrito1.remove1(ofertas)
+    return render(request,'puco/carrito.html', {"carrito1":carrito1.cart1.items(), "total":carrito1.total})
 
 def menosOfertaCarro(request):
     
-    carrito=Cart(request)
+    carrito1=Cart(request)
     id=request.GET['id']
     ofertaDB= Ofertas.objects.get(pk=id)
     producto={"id":id, "nombre":ofertaDB.title,"precio":ofertaDB.precio}
     
-    carrito.decrement(producto)
-    return render(request,'puco/carrito.html', {"carrito":carrito.cart.items(), "total":carrito.total})
+    carrito1.decrement1(producto)
+    return render(request,'puco/carrito.html', {"carrito1":carrito1.cart1.items(), "total":carrito1.total})

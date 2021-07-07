@@ -29,8 +29,8 @@ handler404 = mi_error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('puco.urls')),
-
     
+
     
 ]
 urlpatterns += staticfiles_urlpatterns()

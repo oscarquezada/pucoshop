@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'puco.apps.PucoConfig',
     'widget_tweaks',
     'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'PucoShop.urls'
+   
 
 TEMPLATES = [
     {
