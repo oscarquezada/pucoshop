@@ -81,3 +81,5 @@ class Mascota(models.Model):
     edad = models.CharField(max_length=2)
     tamano=models.CharField(max_length=1, choices=Tamano)
     peso=models.CharField(max_length=2)
+    def __str__(self):
+        return self.rut

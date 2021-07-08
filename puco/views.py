@@ -84,8 +84,10 @@ def productos(request):
 
 def mascota(request):
     username=request.user.get_username()
-    cliente= Cliente.objects.filter(nikename=username).values('rut').get()
+    
+    cliente= Cliente.objects.filter(nikename=username).get()
     print(cliente)
+  
     mascota=Mascota.objects.filter(rut=cliente).values('rut','tipo','edad','tamano','peso').all()
     print(mascota)
     return render(request, 'puco/mascota.html', {'mascota':mascota})
@@ -104,8 +106,7 @@ def recomendaciones(request):
 
     return render(request,'puco/recomendaciones.html', {'producto':producto})   
 
-
-    
+ 
 def register(request):
 
     # Creamos el formulario de autenticación vacío
