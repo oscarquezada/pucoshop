@@ -18,6 +18,7 @@ urlpatterns = [
     path('login', views.login_user),
     path('logout', views.logout),
     path('mascota', views.mascota),
+    path('regmascota', views.regmascota),
     path('carrito', views.carrito),
     
     path('agregarProductoCarro', views.agregarProductoCarro),

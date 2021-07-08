@@ -76,7 +76,7 @@ class Mascota(models.Model):
         ('G','Grande'),
     )
 
-    rut=models.ForeignKey(Cliente, on_delete=models.CASCADE) 
+    rut=models.CharField(max_length=10)
     tipo= models.CharField(max_length=1, choices=Tipos)
     edad = models.CharField(max_length=2)
     tamano=models.CharField(max_length=1, choices=Tamano)

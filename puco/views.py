@@ -81,6 +81,14 @@ def productos(request):
     producto=Producto.objects.all()
     oferta=Ofertas.objects.all()
     return render(request,'puco/welcome.html',{"producto":producto,"oferta":oferta})
+
+def mascota(request):
+    username=request.user.get_username()
+    cliente= Cliente.objects.filter(nikename=username).values('rut').get()
+    print(cliente)
+    mascota=Mascota.objects.filter(rut=cliente).values('rut','tipo','edad','tamano','peso').all()
+    print(mascota)
+    return render(request, 'puco/mascota.html', {'mascota':mascota})
    
 def recomendaciones(request):
     #traer id del login
@@ -144,7 +152,7 @@ def login_user(request):
     # Si llegamos al final renderizamos el formulario
     return render(request, "puco/login.html", {'form': form})
 
-def mascota(request):
+def regmascota(request):
     form = MascotaPostForm()
     if request.method == "POST":
         # Añadimos los datos recibidos al formulario
@@ -161,7 +169,7 @@ def mascota(request):
                 # Y le redireccionamos a la portada
                 return redirect('/welcome')
 
-    return render(request, 'puco/mascota.html', {'form': form})
+    return render(request, 'puco/registromascota.html', {'form': form})
 
 
 
