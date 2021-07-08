@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'puco.apps.PucoConfig',
     'widget_tweaks',
     'rest_framework',
-    'khipu',
+
     
 ]
 
