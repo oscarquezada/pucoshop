@@ -11,55 +11,71 @@
     
     <script>
         function Agregar(ele){
-            id =ele.getAttribute("id");
+            key =ele.getAttribute("id");
             console.log(ele.getAttribute("id"));
             var xhr= new XMLHttpRequest();
-            xhr.open("get","/agregarProductoCarro?id="+id);
-            xhr.send();
-        }
-        function Eliminar(ele){
-            id =ele.getAttribute("id");
-            console.log(ele.getAttribute("id"));
-            var xhr= new XMLHttpRequest();
-            xhr.open("get","/eliminarProductoCarro?id="+id);
-            xhr.send();
-        }
-        function Menos(ele){
-            id =ele.getAttribute("id");
-            console.log(ele.getAttribute("id"));
-            var xhr= new XMLHttpRequest();
-            xhr.open("get","/menosProductoCarro?id="+id);
-            xhr.send();
-        }
-        function borrar(ele){
-            id =ele.getAttribute("id");
-            console.log(ele.getAttribute("id"));
-            var xhr= new XMLHttpRequest();
-            xhr.open("get","/eliminarCarro?");
-            xhr.send();
-        }
-        //oferta/
-        function Agregar1(ele){
-            id =ele.getAttribute("id");
-            console.log(ele.getAttribute("id"));
-            var xhr= new XMLHttpRequest();
-            xhr.open("get","/agregarOfertaCarro?id="+id);
+            
+                  
+            xhr.open("get","/agregarProductoCarro?id="+key);
+            location.reload();
             xhr.send();
             
         }
-        function Eliminar1(ele){
-            id =ele.getAttribute("id");
+        function Eliminar(ele){
+            key =ele.getAttribute("id");
             console.log(ele.getAttribute("id"));
             var xhr= new XMLHttpRequest();
-            xhr.open("get","/eliminarOfertaCarro?id="+id);
+            xhr.open("get","/eliminarProductoCarro?id="+key);
+            location.reload();
             xhr.send();
+            
+        }
+        function Menos(ele){
+            key =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/menosProductoCarro?id="+key);
+            location.reload();
+            xhr.send();
+            
+        }
+        function borrar(ele){
+            key =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/eliminarCarro?");
+            location.reload();
+            xhr.send();
+           
+        }
+        //oferta/
+        function Agregar1(ele){
+            key =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/agregarOfertaCarro?id="+key);
+            location.reload();
+            xhr.send();
+       
+            
+        }
+        function Eliminar1(ele){
+            key =ele.getAttribute("id");
+            console.log(ele.getAttribute("id"));
+            var xhr= new XMLHttpRequest();
+            xhr.open("get","/eliminarOfertaCarro?id="+key);
+            location.reload();
+            xhr.send();
+          
         }
         function Menos1(ele){
-            id =ele.getAttribute("id");
+            key =ele.getAttribute("id");
             console.log(ele.getAttribute("id"));
             var xhr= new XMLHttpRequest();
-            xhr.open("get","/menosOfertaCarro?id="+id);
+            xhr.open("get","/menosOfertaCarro?id="+key);
+            location.reload();
             xhr.send();
+      
         }
 
     </script>
@@ -90,41 +106,36 @@
 
         <div class="col-12 center">
             <h1> productos en el carrito</h1>
-            <div class=" row  col-12" >
+            <div class=" row  col-10" >
                         
 
-                <li class="menu" style="width: 12.5%; padding: 0;">nombre</li>
-                <li class="menu" style="width: 12.5%; padding: 0;">cantidad</li>
-                <li class="menu" style="width: 12.5%; padding: 0;">preciounidad</li>
-                <li class="menu" style="width: 12.5%; padding: 0;">preciototal</li>
+                <li class="menu" style="width: 24%; padding: 0;">nombre</li>
+                <li class="menu" style="width: 24%; padding: 0;">cantidad</li>
+                <li class="menu" style="width: 24%; padding: 0;">preciounidad</li>
+                <li class="menu" style="width: 24%; padding: 0;">preciototal</li>
 
             </div>
-            <div class="row">
+            <div class="row" style="display:block;">
                 {% for key,value in carrito %}
     
                     
-                    <div class=" row  col-12" >
-                        
-                        <li class="menu" style="width: 14%; padding: 0;">{{ value.nombre }}</li>
-                        <li class="menu" style="width: 14%; padding: 0;">{{ value.cantidad}}</li>
-                        <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.precio }}</li>
-                        <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.subTotal }}</li>
-                        
-                        <form id="agregar" action="/agregarProductoCarro"  style="width: 14%; padding: 0;" >
-                            <input name="id" type="hidden" value={{key}}>
-                            <button id={{key}}>+1</button>
-                        </form>
-        
-                        <form action="/menosProductoCarro" style="width: 14%; padding: 0;">
-                            <input name="id" type="hidden" value={{key}}>
-                            <button  id={{key}}>-1</button>
-                        </form>
-                        <form action="/eliminarProductoCarro" style="width: 14%; padding: 0;">
-                            <input name="id" type="hidden" value={{key}}>
-                            <button  id={{key}}>eliminar</button>
-                        </form>
+                    <div class="row" >
+                        <div class="  col-10" style="display: block;">
+                            <li class="menu" style="width: 24%; padding: 0; ">{{ value.nombre }}</li>
+                            <li class="menu" style="width: 24%; padding: 0;">{{ value.cantidad}}</li>
+                            <li class="menu" style="width: 24%; padding: 0;"><span>$</span>{{ value.precio }}</li>
+                            <li class="menu" style="width: 24%; padding: 0;"><span>$</span>{{ value.subTotal }}</li>
+                        </div>
+                        <div class="col-2" >
+                            <button style="text-align: center;"id={{key}} onclick="Agregar(this); location.reload()">+1</button>              
+                            <button style="text-align: center;" id={{key}} onclick="Menos(this)">-1</button>
+                            <button style="text-align: center;" id={{key}} onclick="Eliminar(this)">eliminar</button>
+
+                        </div>
+                    
                         
                         
+  
                     </div>
                      
                 {% endfor %}
@@ -133,31 +144,24 @@
                 </form>-->
             </div> 
 
-            <div class="row">
+            <div class="row" style="display:block;">
                 {% for key,value in carrito1 %}
     
                     
-                    <div class=" row  col-12" >
-                        
-                        <li class="menu" style="width: 14%; padding: 0;">{{ value.nombre }}</li>
-                        <li class="menu" style="width: 14%; padding: 0;">{{ value.cantidad}}</li>
-                        <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.precio }}</li>
-                        <li class="menu" style="width: 14%; padding: 0;"><span>$</span>{{ value.subTotal }}</li>
-                        
-                        <form id="agregar" action="/agregarOfertaCarro" action="/carrito"  style="width: 14%; padding: 0;" >
-                            <input name="id" type="hidden" value={{key}}>
-                            <button id={{key}}>+1</button>
-                        </form>
-        
-                        <form action="/menosOfertaCarro" style="width: 14%; padding: 0;">
-                            <input name="id" type="hidden" value={{key}}>
-                            <button  id={{key}}>-1</button>
-                        </form>
-                        <form action="/eliminarOfertaCarro" style="width: 14%; padding: 0;">
-                            <input name="id" type="hidden" value={{key}}>
-                            <button  id={{key}}>eliminar</button>
-                        </form>
-                        
+                    
+                <div class="row" >
+                    <div class="  col-10" style="display: block;">
+                        <li class="menu" style="width: 24%; padding: 0; ">{{ value.nombre }}</li>
+                        <li class="menu" style="width: 24%; padding: 0;">{{ value.cantidad}}</li>
+                        <li class="menu" style="width: 24%; padding: 0;"><span>$</span>{{ value.precio }}</li>
+                        <li class="menu" style="width: 24%; padding: 0;"><span>$</span>{{ value.subTotal }}</li>
+                    </div>
+                    <div class="col-2" >
+                        <button style="text-align: center;"id={{key}} onclick="Agregar1(this); location.reload()">+1</button>              
+                        <button style="text-align: center;" id={{key}} onclick="Menos1(this)">-1</button>
+                        <button style="text-align: center;" id={{key}} onclick="Eliminar1(this)">eliminar</button>
+
+                    </div>
                         
                     </div>
                      

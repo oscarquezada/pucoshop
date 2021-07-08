@@ -24,15 +24,24 @@ from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import handler404
 from puco.views import mi_error_404
- 
+'''try:
+    from django.conf.urls.defaults import url
+except ImportError:
+    from django.conf.urls import url
+from .views import verificacion
+
+
+urlpatterns = [
+    url(r'^verificacion/$', verificacion, name='khipu_verificacion'),
+]'''
 handler404 = mi_error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('puco.urls')),
-    
+]
 
     
-]
+
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

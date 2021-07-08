@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'puco.apps.PucoConfig',
     'widget_tweaks',
     'rest_framework',
+    'khipu',
     
 ]
 
@@ -128,3 +129,7 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 AUTHENTICATION_BACKENDS =['puco.backend.MyBackend','django.contrib.auth.backends.ModelBackend']
+
+KHIPU_RECEIVER_ID = '236987'
+KHIPU_SECRET_KEY = '9kmbf4fckm81f9892a291a12d0m10cdf389'
+

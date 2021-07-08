@@ -96,8 +96,8 @@ def recomendaciones(request):
 
     return render(request,'puco/recomendaciones.html', {'producto':producto})   
 
-    
 
+    
 def register(request):
 
     # Creamos el formulario de autenticación vacío
